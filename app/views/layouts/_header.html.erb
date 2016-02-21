@@ -13,9 +13,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse-menu">
       <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+       <p class="navbar-text navbar-right"><%= current_user.full_name%>でログイン中</p>
+     <% end %>
         <%# if 条件文　ユーザーがログインしているなら %>
         <% if user_signed_in? %>
-            <li><%= link_to "設定変更", edit_user_registration_path %></li>
+            <li><%= link_to "更新", edit_user_registration_path %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
              <%# else条件文　ユーザーがログインしていないなら %>
           <% else %>
