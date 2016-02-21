@@ -1,0 +1,27 @@
+<h1>顧客情報一覧</h1>
+<p>お客様情報が表示されます。</p>
+<table class="table table-striped">
+  <thead>
+    <th>会社名</th>
+    <th>性</th>
+    <th>電子メール</th>
+    <th>リンク</th>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.company.name %></td>
+        <td><%= customer.family_name %></td>
+        <td><%= customer.given_name %></td>
+        <td><%= customer.email %></td>
+        <td><%= link_to '詳細', customer, class: "btn btn-primary" %></td>
+        <td><%= link_to '編集', edit_customer_path(customer), class: "btn btn-primary" %></td>
+        <td><%= link_to '削除', customer, method: :delete,
+        data: {confirm: "You sure?"}, class: "btn btn-primary" %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @customers %>
+
