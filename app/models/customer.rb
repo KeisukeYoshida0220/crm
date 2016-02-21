@@ -1,5 +1,6 @@
 class Customer < ActiveRecord::Base
   belongs_to :company
+  has_many :comments
 
 #validates :対象となるからむ
 validates :family_name, presence: true, length: { maximum: 20}

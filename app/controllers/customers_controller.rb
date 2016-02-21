@@ -37,7 +37,9 @@ class CustomersController < ApplicationController
   end
 
   def show
-    #@customer = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
+    @comments = @customer.comments
+    @comment = Comment.new #(form_forで使う)
   end
 
   def destroy
@@ -46,7 +48,7 @@ class CustomersController < ApplicationController
   end
 
   private
-  def customer_params
+  def customer_params　#新しく作ったらここが必要
     params.require(:customer).permit(
       :family_name,
       :given_name,
