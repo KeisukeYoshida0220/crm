@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
 
   before_action :set_company, only: [:new, :edit]
 
-  before_action :authenticate_user!, only: [:new, :create, :edit,:update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @customers = Customer.page(params[:page])
